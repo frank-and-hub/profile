@@ -148,7 +148,7 @@ const Table = ({
     const start = (currentPage - 1) * dataLimit + 1;
     const end = Math.min(dataCount, currentPage * dataLimit);
 
-    const columnCondication = (header, item, i) => {
+    const columnCondication = (header, item, i, data) => {
         let content;
         switch (header) {
             case 'id':
@@ -161,9 +161,9 @@ const Table = ({
                 const btn = (<Button
                     iconClass={`bi bi-toggle-${(item === true) ? 'on' : 'off'}`}
                     onClick={(e) => {
-                        handelStatusModel(item.id);
-                        setSelectedItemName(item?.name);
-                        setSelectedItemStatus(!item?.status);
+                        handelStatusModel(data.id);
+                        setSelectedItemName(data?.name);
+                        setSelectedItemStatus(!data?.status);
                     }}
                     tooltip={`${(item === true) ? 'Active' : 'Inictive'}`}
                     disabled={!item}
@@ -171,7 +171,7 @@ const Table = ({
                 content = btn;
                 break;
             case 'image':
-                const imageSrc = item?.path;
+                const imageSrc = data?.path;
                 content = <div className={`w-25 rounded-25`} ><img src={`${imageSrc}`} className={`rounded-circle circle-image-small`} alt={`#`} /></div>;
                 break;
             default:
@@ -256,7 +256,7 @@ const Table = ({
                                 ) : (data && data.length > 0 ? (data.map((item, i) => (
                                     <tr key={item.id} className='p-2'>
                                         {headers.map((header, index) => {
-                                            const content = columnCondication(header, item[header], (i + ((currentPage - 1) * dataLimit)));
+                                            const content = columnCondication(header, item[header], (i + ((currentPage - 1) * dataLimit)), item);
                                             return (
                                                 <td key={index} className={``} >
                                                     {content}

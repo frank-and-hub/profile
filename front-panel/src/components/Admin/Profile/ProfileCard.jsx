@@ -47,20 +47,18 @@ function ProfileCard({ user }) {
     return (
         <>
             <div key={Math.floor(Math.random() * 1000)} className={`card pb-3`}>
-                <div className={`card-body profile-card pt-4 d-flex flex-column align-items-center`}>
-                    <form encType={`multipart/form-data`} >
-                        <img src={src} alt={`${user?.name} - Profile`} className={`rounded-circle circle-image`} onClick={handleClick} style={{ cursor: 'pointer' }} />
-                        <input type={`file`} id={`imageInput`} className={`d-none`} name={`image`} onChange={handleFileUpload} />
-                    </form>
+                <form encType={`multipart/form-data`} className={`card-body profile-card pt-4 d-flex flex-column align-items-center`}>
+                    <img src={src} alt={`${user?.name} - Profile`} className={`rounded-circle circle-image`} onClick={handleClick} style={{ cursor: 'pointer' }} />
+                    <input type={`file`} id={`imageInput`} className={`d-none`} name={`image`} onChange={handleFileUpload} />
                     <h2>{user?.name}</h2>
-                    <h3 key={0}>{user?.email}</h3>
+                    <h3>{user?.email}</h3>
                     <div className={`social-links mt-2 w-100`}>
                         {user?.social_details && user?.social_details.length > 0 && user?.social_details.map((social) => (
                             <Link to={`${social?.url}`} className={social?.name} ><i className={`bi bi-${social?.icon}`}></i></Link>
                         ))}
                     </div>
-                </div>
-            </div>
+                </form>
+            </div >
         </>
     );
 }

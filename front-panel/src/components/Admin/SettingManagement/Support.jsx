@@ -35,7 +35,7 @@ const Support = () => {
                         <p className='p-0 m-0 btn' > Support </p>
                     </div>
                 </div>
-                <div className="row gy-4">
+                <div className="row gy-4" key={Math.floor(Math.random() * 34 * 36)}>
                     <div className={`${supportDetails.length > 0 ? `col-xl-6` : `col-0 m-0`}`}>
                         {supportDetails && supportDetails.length > 0 && supportDetails.map((values) => (
                             <div className="card p-4">

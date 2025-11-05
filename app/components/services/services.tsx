@@ -11,13 +11,14 @@ const services: Service[] = [
 
 export default function Services() {
     return (
-        <section id="services" className="py-16 px-4 sm:px-6 max-w-6xl mx-auto">
+        <section id="services" className="py-16 px-4 sm:px-6 max-w-6xl mx-auto ">
+
             <div className="max-w-2xl mx-auto text-center mb-6">
                 <Title order={2} className="gradient-text">Services</Title>
                 <Text color="dimmed">I provide a range of services to help build and launch your product.</Text>
             </div>
 
-            <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="inline-grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
                 {services.map((s) => (
                     <Card key={s.id} shadow="sm" radius="md">
                         <div className="flex items-start justify-between mb-4">

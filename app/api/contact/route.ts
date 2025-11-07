@@ -1,9 +1,68 @@
+import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
+import { Ratelimit } from '@upstash/ratelimit';
+import { Redis } from '@upstash/redis';
 
-export async function POST(req: Request) {
+// Initialize rate limiter
+const ratelimit = new Ratelimit({
+    redis: Redis.fromEnv(),
+    limiter: Ratelimit.slidingWindow(
+        Number(process.env.CONTACT_FORM_RATE_LIMIT) || 5,
+        '1 m'
+    ),
+});
+
+// Email validation
+const isValidEmail = (email: string) => {
+    const regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+    return regex.test(email);
+};
+
+// Input validation
+const validateInput = (data: any) => {
+    const { name, email, message } = data;
+    if (!name || typeof name !== 'string' || name.length < 2) {
+        return 'Name must be at least 2 characters long';
+    }
+    if (!email || !isValidEmail(email)) {
+        return 'Please provide a valid email address';
+    }
+    if (!message || typeof message !== 'string' || message.length < 10) {
+        return 'Message must be at least 10 characters long';
+    }
+    return null;
+};
+
+export async function POST(req: NextRequest) {
     try {
+        // Get client IP
+        const ip = req.headers.get('x-forwarded-for') || '127.0.0.1';
+
+        // Rate limiting check
+        const { success, limit, reset, remaining } = await ratelimit.limit(ip);
+
+        if (!success) {
+            return NextResponse.json({
+                error: `Too many requests. Please try again after ${new Date(reset).getMinutes()} minutes.`
+            }, {
+                status: 429,
+                headers: {
+                    'X-RateLimit-Limit': limit.toString(),
+                    'X-RateLimit-Remaining': remaining.toString(),
+                    'X-RateLimit-Reset': reset.toString()
+                }
+            });
+        }
+
         const data = await req.json();
-        const { name, email, message } = data ?? {};
+
+        // Validate input
+        const validationError = validateInput(data);
+        if (validationError) {
+            return NextResponse.json({ error: validationError }, { status: 400 });
+        }
+
+        const { name, email, message } = data;
 
         if (!name || !email || !message) {
             return new Response(JSON.stringify({ error: 'Missing fields' }), { status: 400 });

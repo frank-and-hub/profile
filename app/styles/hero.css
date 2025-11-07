@@ -1,0 +1,64 @@
+.parallax-section#home {
+  background-image: url("/images/home-bg.jpg");
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  color: var(--light-color);
+  position: relative;
+}
+
+.parallax-section#home::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.home-thumb {
+  position: relative;
+  z-index: 1;
+  padding: 2rem;
+}
+
+.home-thumb h1 {
+  color: var(--light-color);
+  font-size: 3.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.home-thumb p {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+  max-width: 600px;
+}
+
+.section-btn {
+  background: var(--accent-color);
+  color: var(--light-color);
+  padding: 1rem 2rem;
+  border-radius: 30px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.section-btn:hover {
+  background: var(--light-color);
+  color: var(--accent-color);
+  transform: translateY(-3px);
+}
+
+@media (max-width: 768px) {
+  .home-thumb h1 {
+    font-size: 2.5rem;
+  }
+
+  .home-thumb p {
+    font-size: 1.1rem;
+  }
+}

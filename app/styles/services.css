@@ -5,6 +5,10 @@
   padding: 2rem 0;
 }
 
+.services-grid div {
+  width: 250px;
+}
+
 .service-item {
   background: white;
   padding: 2rem;

@@ -6,28 +6,32 @@ http://www.tooplate.com/view/2087-kalay
 
 */
 
-@import url('https://fonts.googleapis.com/css?family=Poppins:300,400');
+@import url("https://fonts.googleapis.com/css?family=Poppins:300,400");
 
 body {
-    background: #ffffff;
-    font-family: 'Poppins', sans-serif;
-    font-style: normal;
-    font-weight: normal;
-    overflow-x: hidden;
+  background: #ffffff;
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  overflow-x: hidden;
 }
 
-html, body {
+html,
+body {
   width: 100%;
   height: 100%;
 }
-
-
 
 /*---------------------------------------
   Typorgraphy              
 -----------------------------------------*/
 
-h1,h2,h3,h4,h5,h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-style: normal;
   font-weight: bold;
   letter-spacing: 0px;
@@ -75,8 +79,6 @@ p {
   color: #f0f0f0;
 }
 
-
-
 /*---------------------------------------
   Buttons               
 -----------------------------------------*/
@@ -102,13 +104,11 @@ p {
   color: #000000;
 }
 
-
-
 /*---------------------------------------
   General               
 -----------------------------------------*/
 
-html{
+html {
   -webkit-font-smoothing: antialiased;
 }
 
@@ -119,7 +119,9 @@ a {
   text-decoration: none !important;
 }
 
-a:hover, a:active, a:focus {
+a:hover,
+a:active,
+a:focus {
   color: #000000;
   outline: none;
 }
@@ -145,18 +147,21 @@ a:hover, a:active, a:focus {
   padding-bottom: 32px;
 }
 
-#service, #about, #work,
-#contact, footer {
+#service,
+#about,
+#work,
+#contact,
+footer {
   position: relative;
   padding-top: 80px;
   padding-bottom: 80px;
 }
 
-#service, #work {
+#service,
+#work {
   background: #f9f9f9;
   text-align: center;
 }
-
 
 /*---------------------------------------
   Pre loader section              
@@ -183,7 +188,7 @@ a:hover, a:active, a:focus {
 }
 
 .spinner:before {
-  content: '';
+  content: "";
   box-sizing: border-box;
   position: absolute;
   top: 50%;
@@ -195,41 +200,41 @@ a:hover, a:active, a:focus {
   border-radius: 50%;
   border: 2px solid #454545;
   border-top-color: #ffffff;
-  animation: spinner .9s linear infinite;
+  animation: spinner 0.9s linear infinite;
 }
 
 @-webkit-@keyframes spinner {
-  to {transform: rotate(360deg);}
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes spinner {
-  to {transform: rotate(360deg);}
+  to {
+    transform: rotate(360deg);
+  }
 }
-
-
 
 /*---------------------------------------
   Home section              
 -----------------------------------------*/
 
 #home {
-  background: url('../images/home-bg.jpg') 50% 0 repeat-y fixed;
+  background: url("../images/home-bg.jpg") 50% 0 repeat-y fixed;
   background-size: cover;
   background-position: center center;
   display: -webkit-box;
   display: -webkit-flex;
-   display: -ms-flexbox;
+  display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
   -webkit-align-items: center;
   -ms-flex-align: center;
-   align-items: center;
+  align-items: center;
   height: 100vh;
   position: relative;
   text-align: right;
 }
-
-
 
 /*---------------------------------------
   Service section              
@@ -272,8 +277,6 @@ a:hover, a:active, a:focus {
   color: #ffffff;
 }
 
-
-
 /*---------------------------------------
   About section              
 -----------------------------------------*/
@@ -298,8 +301,6 @@ a:hover, a:active, a:focus {
 .about-thumb p {
   padding: 2px 0;
 }
-
-
 
 /*---------------------------------------
   Work section              
@@ -337,8 +338,6 @@ a:hover, a:active, a:focus {
 .work-thumb:hover .work-thumb-overlay {
   opacity: 1;
 }
-
-
 
 /*---------------------------------------
   Contact section              
@@ -382,8 +381,6 @@ a:hover, a:active, a:focus {
   color: #ffffff;
 }
 
-
-
 /*---------------------------------------
   Footer section              
 -----------------------------------------*/
@@ -397,8 +394,6 @@ footer {
 footer p {
   padding-bottom: 16px;
 }
-
-
 
 /*---------------------------------------
   Social icon             
@@ -441,8 +436,6 @@ footer p {
   top: -5px;
 }
 
-
-
 /*---------------------------------------
   Mobile Responsive styles              
 -----------------------------------------*/
@@ -462,16 +455,13 @@ footer p {
   }
 }
 
-
 @media (max-width: 768px) {
   #home {
     height: 85vh;
   }
 }
 
-
 @media (max-width: 580px) {
-
   h1 {
     font-size: 29px;
   }
@@ -488,7 +478,6 @@ footer p {
     margin-top: 42px;
   }
 }
-
 
 @media (max-width: 320px) {
   #home {

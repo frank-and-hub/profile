@@ -1,3 +1,4 @@
+import { Text } from '@mantine/core'
 import Link from 'next/link'
 
 export default function NotFound() {
@@ -5,7 +6,7 @@ export default function NotFound() {
         <>
             <div>
                 <h2>Not Found</h2>
-                <p>Could not find requested resource</p>
+                <Text>Could not find requested resource</Text>
                 <Link href="/">Return Home</Link>
             </div>
         </>

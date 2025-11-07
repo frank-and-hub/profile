@@ -40,7 +40,7 @@ const plans = [
 export default function Price() {
     return (
         <>
-            <section id="price" className="section-padding bg-gray-50/50 dark:bg-gray-900/50">
+            <section id="price" className="section-padding parallax-section bg-gray-50/50 dark:bg-gray-900/50">
                 <Container size="lg">
                     <div className="text-center mb-12 fade-in">
                         <Title order={2} className="text-3xl font-bold mb-4 text-gradient">

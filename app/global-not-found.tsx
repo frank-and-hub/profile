@@ -1,6 +1,7 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
 import type { Metadata } from 'next'
+import { Text } from '@mantine/core'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -14,7 +15,7 @@ export default function GlobalNotFound() {
         <html lang="en" className={inter.className}>
             <body>
                 <h1>404 - Page Not Found</h1>
-                <p>This page does not exist.</p>
+                <Text>This page does not exist.</Text>
             </body>
         </html>
     )

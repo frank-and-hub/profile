@@ -1,4 +1,5 @@
 'use client';
+import { Text } from '@mantine/core';
 import { useEffect } from 'react';
 import { FaCode, FaServer, FaDatabase, FaCloud } from 'react-icons/fa';
 
@@ -7,13 +8,13 @@ const services = [
         icon: FaCode,
         title: "Full-stack Development",
         description: "End-to-end development using React/Next.js and Node.js/Express.",
-        variant: "default"
+        variant: "dark"
     },
     {
         icon: FaServer,
         title: "API Development",
         description: "Building RESTful APIs and GraphQL services with authentication.",
-        variant: "dark"
+        variant: "default"
     },
     {
         icon: FaDatabase,
@@ -42,24 +43,24 @@ export default function Service() {
             <div className="container">
                 <div className="section-title wow fadeInUp" data-wow-delay="0.2s">
                     <h2>What I Can Do For You</h2>
-                    <p>Specialized in full-stack development with a focus on scalable solutions</p>
+                    <Text>Specialized in full-stack development with a focus on scalable solutions</Text>
                 </div>
-                <div className="services-grid">
-                    {services.map((service, index) => (
+                <div className="row justify-around w-100">
+                    {services.map((service, i) => (
                         <div
-                            key={service.title}
-                            className={`service-item wow fadeInUp ${service.variant === 'dark' ? 'dark' : ''}`}
-                            data-wow-delay={`${0.2 * (index + 1)}s`}
+                            key={i}
+                            className={`col-6 wow fadeInUp ${service.variant === 'dark' ? 'dark' : ''}`}
+                            data-wow-delay={`${0.2 * (i + 1)}s `}
                         >
-                            <div className="service-icon">
+                            <div className="text-center">
                                 <service.icon size={30} />
                             </div>
-                            <h4>{service.title}</h4>
-                            <p>{service.description}</p>
+                            <h4 className="text-center">{service.title}</h4>
+                            <Text className='text-center'>{service.description}</Text>
                         </div>
                     ))}
-                </div>
-            </div>
-        </section>
+                </div >
+            </div >
+        </section >
     );
 }

@@ -40,11 +40,11 @@
   background: var(--accent-color);
   color: var(--light-color);
   padding: 1rem 2rem;
-  border-radius: 30px;
   text-transform: uppercase;
   letter-spacing: 1px;
   font-weight: 500;
   transition: all 0.3s ease;
+  border-radius: 1rem !important;
 }
 
 .section-btn:hover {

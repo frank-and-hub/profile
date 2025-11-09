@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Button, Input, Text, Textarea } from '@mantine/core';
+import { Button, Text, Textarea, TextInput } from '@mantine/core';
 
 interface FormData {
     name: string;
@@ -81,7 +81,7 @@ export default function Contact() {
             <div className="container">
                 <div className="row">
                     <div className="col-md-12 col-sm-12">
-                        <div className="wow fadeInUp section-title" data-wow-delay="0.2s">
+                        <div className="section-title" data-wow-delay="0.2s">
                             <h2>Get in touch</h2>
                             <Text>Let's discuss your next project</Text>
                         </div>
@@ -90,23 +90,34 @@ export default function Contact() {
                     <div className="col-md-12">
                         <div className="wow fadeInUp" data-wow-delay="0.4s">
                             {status.message && (
-                                <div className={`alert ${status.type === 'success' ? 'alert-success' : 'alert-danger'}`}>
+                                <div className={`alert ${status.type === 'success' ? 'alert-success' : 'alert-danger'} text-red`}>
                                     {status.message}
                                 </div>
                             )}
-                            <form id="contact-form" onSubmit={handleSubmit} className={`w-100`}>
-                                <Input type="text" className="col-6 col-sm-12 form-control" name="name" placeholder="Name" value={formData.name} onChange={handleChange} required minLength={2} maxLength={50} />
-                                <Input type="email" className="col-6 col-sm-12 form-control" name="email" placeholder="Email" value={formData.email} onChange={handleChange} required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" />
-                                <Textarea className="col-12 form-control" maxRows={6} minRows={3} name="message" placeholder="Message" value={formData.message} onChange={handleChange} required minLength={10} maxLength={1000} />
-                                <div className="col-md-offset-8 col-md-4 col-sm-offset-6 col-sm-6">
-                                    <Button
-                                        id="submit"
-                                        type="submit"
-                                        className="wow fadeInUp smoothScroll btn btn-default section-btn form-control"
-                                        disabled={loading}
-                                    >
-                                        {loading ? 'Sending...' : 'Send Message'}
-                                    </Button>
+                            <form id="contact-form" onSubmit={handleSubmit}>
+                                <div className="row">
+                                    <div className="py-3 col-md-6 col-sm-6">
+                                        <TextInput id="name" name="name" type="text" placeholder="Your Name" value={formData.name} onChange={handleChange} minLength={2} maxLength={50} className="shadow-sm rounded-2xl form-control" />
+                                    </div>
+
+                                    <div className="py-3 col-md-6 col-sm-6">
+                                        <TextInput id="email" name="email" type="email" placeholder="Your email address" value={formData.email} onChange={handleChange} pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" className="shadow-sm rounded-2xl form-control" />
+                                    </div>
+
+                                    <div className="py-3 col-md-12 col-sm-12">
+                                        <Textarea id="message" name="message" placeholder="Your message here..." value={formData.message} onChange={handleChange} minLength={10} maxLength={1000} minRows={6} className="shadow-sm rounded-2xl form-control" />
+                                    </div>
+
+                                    <div className="text-center col-12">
+                                        <Button
+                                            id="submit"
+                                            type="submit"
+                                            className="wow fadeInUp smoothScroll btn btn-default section-btn"
+                                            disabled={loading}
+                                        >
+                                            {loading ? 'Sending...' : 'Send Message'}
+                                        </Button>
+                                    </div>
                                 </div>
                             </form>
                         </div>

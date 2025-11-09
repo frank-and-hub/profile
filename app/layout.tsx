@@ -1,14 +1,10 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
-import Header from './components/header/Header';
-import Footer from './components/footer/Footer';
-import { Suspense } from 'react';
-import Loading from './loading';
-import Script from 'next/script';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import './styles/animations.css';
 import './styles/base.css';
-import { MantineProvider } from '@mantine/core';
+import 'swiper/css';
+import { Providers } from './Providers';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -32,17 +28,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-
-      </head>
       <body className={`${geistSans.variable} ${geistMono.variable} main-body`}>
-        <MantineProvider>
-          <Suspense fallback={<Loading />}>
-            <Header />
-            {children}
-            <Footer />
-          </Suspense>
-        </MantineProvider>
+        <Providers>
+          {children}
+        </Providers>
       </body>
     </html>
   );

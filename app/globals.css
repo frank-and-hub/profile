@@ -460,6 +460,8 @@ body {
 .main-body {
   min-height: 100vh;
   display: flex;
+  padding: 0;
+  margin: 0;
   flex-direction: column;
   background-color: #f9fafb;
   -webkit-font-smoothing: antialiased;

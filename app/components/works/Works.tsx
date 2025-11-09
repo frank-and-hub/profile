@@ -51,13 +51,13 @@ export default function Work() {
                         </div>
                     </div>
                     {works.map((work) => (
-                        <div key={work.id} className="wow fadeInUp col-md-4 col-sm-6 my-2" data-wow-delay="0.4s">
+                        <div key={work.id} className="wow fadeInUp col-md-4 col-sm-6 my-2" data-wow-delay="0.5s">
                             <div className="work-thumb">
                                 <div className="work-thumb-overlay">
                                     <h4 className="text-white">{work.title}</h4>
-                                    <h2>{work.category}</h2>
+                                    <h3>{work.category}</h3>
                                 </div>
-                                <Image src={work.image} alt={work.title} width={400} height={300} className="img-responsive rounded-lg" />
+                                <Image src={work.image} alt={work.title} width={400} height={300} className="img-responsive rounded-2xl" />
                             </div>
                         </div>
                     ))}

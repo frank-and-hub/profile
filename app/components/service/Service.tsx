@@ -49,7 +49,7 @@ export default function Service() {
                     {services.map((service, i) => (
                         <div
                             key={i}
-                            className={`col-6 wow fadeInUp ${service.variant === 'dark' ? 'dark' : ''}`}
+                            className={`col-6 ${service.variant === 'dark' ? 'dark' : ''}`}
                             data-wow-delay={`${0.2 * (i + 1)}s `}
                         >
                             <div className="text-center">

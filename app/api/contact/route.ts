@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 import { Ratelimit } from '@upstash/ratelimit';
 import { Redis } from '@upstash/redis';
+import { useSelector, useDispatch } from 'react-redux'
 
 // Initialize rate limiter
 const ratelimit = new Ratelimit({
@@ -113,4 +114,8 @@ export async function POST(req: NextRequest) {
         console.error('Contact API error', err);
         return new Response(JSON.stringify({ error: err?.message ?? 'Unknown error' }), { status: 500 });
     }
+}
+
+export async function GET(req: NextRequest) {
+
 }

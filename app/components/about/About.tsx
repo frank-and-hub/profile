@@ -34,9 +34,8 @@ export default function About() {
 
                     <div className="col-md-8 col-sm-12">
                         <div className="about-thumb">
-                            <div className="wow fadeInUp section-title" data-wow-delay="0.6s">
-                                <h2>a little more about Kalay</h2>
-                                <Text>Full-stack Developer, Cloud Architect & DevOps Engineer</Text>
+                            <div className="section-title" data-wow-delay="0.6s">
+                                <h2>a little more about me</h2>
                             </div>
                             <div className="wow fadeInUp" data-wow-delay="0.8s">
                                 <Text>

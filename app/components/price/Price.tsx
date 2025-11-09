@@ -1,126 +1,149 @@
-import React from 'react';
-import { Container, Card, Title, Text, Button, List, ThemeIcon, Badge, ListItem } from '@mantine/core';
-import { FaCheck } from 'react-icons/fa';
+import React, { useEffect, useState } from 'react';
+import { Container, Card, Title, Text, Button } from '@mantine/core';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
 const plans = [
     {
-        name: 'Basic Website',
-        price: '$799',
-        duration: 'starting from',
-        description: 'Perfect for small business websites and personal portfolios',
+        name: 'Starter Website',
+        price: '$499',
+        description:
+            'Perfect for individuals, freelancers, or small businesses who need a fast, modern, and professional online presence.',
         features: [
-            'Responsive Design',
-            'Up to 5 Pages',
-            'Contact Form',
-            'SEO Optimization',
-            'Mobile-Friendly',
-            '2 Rounds of Revisions'
+            'Responsive 5-page website',
+            'Modern UI/UX design',
+            'Contact & Inquiry Form',
+            'Basic SEO setup',
+            'Deployment on your custom domain',
+            'Performance optimization',
+            'Google Analytics integration',
+            '1-month maintenance & support',
         ],
-        highlight: false
+        highlight: false,
     },
     {
-        name: 'Pro Application',
-        price: '$1,999',
-        duration: 'starting from',
-        description: 'Ideal for businesses needing custom functionality',
+        name: 'Professional Web App',
+        price: '$1,499',
+        description:
+            'Ideal for growing businesses that need a data-driven web application with backend integration and advanced features.',
         features: [
-            'Everything in Basic',
-            'Custom React/Next.js Development',
-            'Database Integration',
-            'User Authentication',
-            'Admin Dashboard',
-            'API Integration',
-            'Payment Processing',
-            '3 Months Support'
+            'Custom React.js / Next.js frontend',
+            'Node.js or Laravel backend',
+            'Database integration',
+            'User authentication & authorization',
+            'Admin dashboard & analytics',
+            'Payment gateway integration',
+            'Performance optimization & caching',
+            '1-months priority support',
         ],
-        highlight: true
-    }
+        highlight: true,
+    },
+    {
+        name: 'Full-Stack Application',
+        price: '$1,999',
+        description:
+            'Best suited for startups and enterprises building scalable SaaS platforms or complex multi-tenant systems.',
+        features: [
+            'Frontend + Backend architecture',
+            'Next.js + Nest.js / Laravel API setup',
+            'User authentication & roles',
+            'Admin dashboard & management panel',
+            'Subscription & billing system',
+            'Multi-tenant / team workspace support',
+            'Deployment on AWS / Vercel',
+            '1-months dedicated support',
+        ],
+        highlight: false,
+    },
 ];
 
 export default function Price() {
-    return (
-        <>
-            <section id="price" className="section-padding parallax-section bg-gray-50/50 dark:bg-gray-900/50">
-                <Container size="lg">
-                    <div className="text-center mb-12 fade-in">
-                        <Title order={2} className="text-3xl font-bold mb-4 text-gradient">
-                            Transparent Pricing
-                        </Title>
-                        <Text size="lg" color="dimmed" className="max-w-2xl mx-auto">
-                            Choose a package that fits your needs. All prices are starting points
-                            and may vary based on specific requirements.
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const handleResize = () => setIsMobile(window.innerWidth < 768);
+        handleResize();
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+    const CardComponent = (plan: any, i: number) => (
+        <Card
+            padding="xl"
+            radius="lg"
+            shadow="sm"
+            style={{
+                height: '35rem',
+                minHeight: '30rem',
+                mxHeight: '40rem',
+                overflow: 'hidden',
+                width: '95%'
+            }}
+            className={`text-center transition-transform duration-300 p-3 row flex-col justify-between shadow-md rounded-2xl`}
+        >
+            <div className='m-auto w-screen'>
+                <div className="my-4">
+                    <Text size="xl" fw={700} className="mb-1 text-dark color">
+                        {plan.name}
+                    </Text>
+                    <div className="d-flex justify-center align-items-baseline mb-2">
+                        <Text size="xl" fw={700} className="me-2 text-primary">
+                            {plan.price}
                         </Text>
                     </div>
+                    <Text size="sm" c="dimmed">
+                        {plan.description}
+                    </Text>
+                </div>
 
-                    <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-                        {plans.map((plan, index) => (
-                            <Card
-                                key={plan.name}
-                                padding="xl"
-                                radius="md"
-                                className={`relative transition-transform duration-300 hover:-translate-y-1 ${plan.highlight ? 'border-2 border-purple-500' : ''
-                                    }`}
-                            >
-                                {plan.highlight && (
-                                    <Badge
-                                        className="absolute -top-3 right-4 bg-linear-to-r from-purple-600 to-blue-600"
-                                        size="lg"
-                                    >
-                                        Popular
-                                    </Badge>
-                                )}
+                <div className="my-4">
+                    {plan?.features?.map((feature: string, idx: number) => (
+                        <Text key={idx} className='mb-1 text-sm' >{feature}</Text>
+                    ))}
+                </div>
+            </div>
 
-                                <div className="mb-6">
-                                    <Text size="xl" fw={700} className="mb-2">
-                                        {plan.name}
-                                    </Text>
-                                    <div className="flex items-baseline mb-2">
-                                        <Text size="xl" fw={700} className="mr-2">
-                                            {plan.price}
-                                        </Text>
-                                        <Text size="sm" c="dimmed">
-                                            {plan.duration}
-                                        </Text>
-                                    </div>
-                                    <Text size="sm" c="dimmed">
-                                        {plan.description}
-                                    </Text>
-                                </div>
+            <div className='m-auto w-screen'>
+                <Button
+                    component="a"
+                    href="#contact"
+                    fullWidth
+                    size="md"
+                    className="wow fadeInUp smoothScroll btn btn-default section-btn"
+                >
+                    Get Started
+                </Button>
+            </div>
+        </Card>
+    );
 
-                                <List
-                                    spacing="sm"
-                                    size="sm"
-                                    className="mb-6"
-                                    icon={
-                                        <ThemeIcon size={20} radius="xl" className="bg-purple-500">
-                                            <FaCheck size={12} />
-                                        </ThemeIcon>
-                                    }
-                                >
-                                    {plan.features.map((feature) => (
-                                        <ListItem key={feature}>
-                                            {feature}
-                                        </ListItem>
-                                    ))}
-                                </List>
+    return (
+        <section id="price" className="section-padding bg-light parallax-section">
+            <div className="container">
+                <div className="text-center mb-5">
+                    <Title order={2} className="fw-bold mb-3 text-dark">
+                        Transparent Pricing
+                    </Title>
+                    <Text size="lg" color="dimmed" className="mx-auto w-75">
+                        Choose a package that fits your needs. All prices are starting points and may vary based on specific requirements.
+                    </Text>
+                </div>
 
-                                <Button
-                                    component="a"
-                                    href="#contact"
-                                    fullWidth
-                                    size="md"
-                                    className={`mt-4 ${plan.highlight
-                                        ? 'bg-linear-to-r from-purple-600 to-blue-600'
-                                        : 'bg-gray-900 dark:bg-gray-700'
-                                        } text-white hover:opacity-90 transition-opacity`}
-                                >
-                                    Get Started
-                                </Button>
-                            </Card>
+                {!isMobile ? (
+                    <div className="row justify-center">
+                        {plans.map((plan, i) => (
+                            <div key={i} className="col-md-4 col-sm-6 my-2 px-4 pb-5">
+                                {CardComponent(plan, i)}
+                            </div>
                         ))}
                     </div>
-                </Container>
-            </section>
-        </>
+                ) : (
+                    <Swiper spaceBetween={20} slidesPerView={1.1} centeredSlides={true} className="py-3">
+                        {plans.map((plan, i) => (
+                            <SwiperSlide key={i}>{CardComponent(plan, i)}</SwiperSlide>
+                        ))}
+                    </Swiper>
+                )}
+            </div>
+        </section>
     );
 }

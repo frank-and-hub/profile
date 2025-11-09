@@ -86,7 +86,6 @@ p {
 .section-btn {
   background: #000000;
   border: none;
-  border-radius: 50px;
   color: #f0f0f0;
   font-size: 12px;
   font-weight: bold;
@@ -96,6 +95,7 @@ p {
   text-transform: uppercase;
   -webkit-transition: all ease-in-out 0.4s;
   transition: all ease-in-out 0.4s;
+  border-radius: 1rem !important;
 }
 
 .section-btn:focus,

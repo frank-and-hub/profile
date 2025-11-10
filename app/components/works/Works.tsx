@@ -1,8 +1,7 @@
 'use client';
 
-import { useEffect } from 'react';
 import Image from 'next/image';
-import { Text } from '@mantine/core';
+import { Text, Title } from '@mantine/core';
 
 interface WorkItem {
     id: number;
@@ -33,25 +32,19 @@ const works: WorkItem[] = [
 ];
 
 export default function Work() {
-    useEffect(() => {
-        if (typeof window !== 'undefined') {
-            const WOW = require('wow.js');
-            new WOW().init();
-        }
-    }, []);
 
     return (
         <section id="work" className="parallax-section">
             <div className="container">
                 <div className="row">
                     <div className="col-md-12 col-sm-12">
-                        <div className="wow fadeInUp section-title" data-wow-delay="0.2s">
-                            <h2>Featured Projects</h2>
+                        <div className="fadeInUp section-title" data-wow-delay="0.2s">
+                            <Title order={2}>Featured Projects</Title>
                             <Text>Showcasing full-stack development, API integration, and cloud solutions</Text>
                         </div>
                     </div>
                     {works.map((work) => (
-                        <div key={work.id} className="wow fadeInUp col-md-4 col-sm-6 my-2" data-wow-delay="0.5s">
+                        <div key={work.id} className="fadeInUp col-md-4 col-sm-6 my-2" data-wow-delay="0.5s">
                             <div className="work-thumb">
                                 <div className="work-thumb-overlay">
                                     <h4 className="text-white">{work.title}</h4>

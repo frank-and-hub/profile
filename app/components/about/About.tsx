@@ -2,17 +2,10 @@
 
 import { useEffect } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
-import { Text } from '@mantine/core';
+import { Text, Title } from '@mantine/core';
 import SocialLinks from '../social-links/SocialLinks';
 
 export default function About() {
-    useEffect(() => {
-        if (typeof window !== 'undefined') {
-            const WOW = require('wow.js');
-            new WOW().init();
-        }
-    }, []);
 
     return (
         <section id="about" className="parallax-section">
@@ -25,7 +18,7 @@ export default function About() {
                                 width={400}
                                 height={400}
                                 alt="Profile"
-                                className="wow fadeInUp img-responsive rounded-xl"
+                                className="fadeInUp img-responsive rounded-xl"
                                 data-wow-delay="0.2s"
                             />
                             <SocialLinks />
@@ -35,9 +28,9 @@ export default function About() {
                     <div className="col-md-8 col-sm-12">
                         <div className="about-thumb">
                             <div className="section-title" data-wow-delay="0.6s">
-                                <h2>a little more about me</h2>
+                                <Title order={2}>a little more about me</Title>
                             </div>
-                            <div className="wow fadeInUp" data-wow-delay="0.8s">
+                            <div className="fadeInUp" data-wow-delay="0.8s">
                                 <Text>
                                     As a versatile full-stack developer, I bring extensive expertise in both frontend and
                                     backend technologies. My focus is on creating scalable, efficient web applications

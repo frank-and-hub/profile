@@ -72,19 +72,19 @@ export default function Price() {
             radius="lg"
             shadow="sm"
             style={{
-                height: '35rem',
+                // height: '35rem',
                 minHeight: '30rem',
-                mxHeight: '40rem',
+                maxHeight: '45rem',
                 overflow: 'hidden',
-                width: '95%'
+                width: '100%'
             }}
             className={`text-center transition-transform duration-300 p-3 row flex-col justify-between shadow-md rounded-2xl`}
         >
             <div className='m-auto w-screen'>
                 <div className="my-4">
-                    <Text size="xl" fw={700} className="mb-1 text-dark color">
+                    <Title order={4} size="xl" fw={700} className="mb-1 text-dark color">
                         {plan.name}
-                    </Text>
+                    </Title>
                     <div className="d-flex justify-center align-items-baseline mb-2">
                         <Text size="xl" fw={700} className="me-2 text-primary">
                             {plan.price}
@@ -108,7 +108,7 @@ export default function Price() {
                     href="#contact"
                     fullWidth
                     size="md"
-                    className="wow fadeInUp smoothScroll btn btn-default section-btn"
+                    className=" fadeInUp smoothScroll btn btn-default section-btn"
                 >
                     Get Started
                 </Button>
@@ -118,7 +118,7 @@ export default function Price() {
 
     return (
         <section id="price" className="section-padding bg-light parallax-section">
-            <div className="container">
+            <div className="container px-0">
                 <div className="text-center mb-5">
                     <Title order={2} className="fw-bold mb-3 text-dark">
                         Transparent Pricing
@@ -131,7 +131,7 @@ export default function Price() {
                 {!isMobile ? (
                     <div className="row justify-center">
                         {plans.map((plan, i) => (
-                            <div key={i} className="col-md-4 col-sm-6 my-2 px-4 pb-5">
+                            <div key={i} className="col-md-4 col-sm-6 my-2 px-3 pb-5">
                                 {CardComponent(plan, i)}
                             </div>
                         ))}

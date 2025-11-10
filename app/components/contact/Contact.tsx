@@ -1,6 +1,6 @@
-'use client';
+// 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Button, Text, Textarea, TextInput } from '@mantine/core';
 
 interface FormData {
@@ -25,13 +25,6 @@ export default function Contact() {
         message: ''
     });
     const [loading, setLoading] = useState(false);
-
-    useEffect(() => {
-        if (typeof window !== 'undefined') {
-            const WOW = require('wow.js');
-            new WOW().init();
-        }
-    }, []);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;
@@ -88,7 +81,7 @@ export default function Contact() {
                     </div>
 
                     <div className="col-md-12">
-                        <div className="wow fadeInUp" data-wow-delay="0.4s">
+                        <div className="" data-wow-delay="0.4s">
                             {status.message && (
                                 <div className={`alert ${status.type === 'success' ? 'alert-success' : 'alert-danger'} text-red`}>
                                     {status.message}
@@ -112,7 +105,7 @@ export default function Contact() {
                                         <Button
                                             id="submit"
                                             type="submit"
-                                            className="wow fadeInUp smoothScroll btn btn-default section-btn"
+                                            className="fadeInUp smoothScroll btn btn-default section-btn"
                                             disabled={loading}
                                         >
                                             {loading ? 'Sending...' : 'Send Message'}

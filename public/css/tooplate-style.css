@@ -266,7 +266,7 @@ footer {
 }
 
 .service-thumb .fa {
-  color: #7682cc;
+  color: #303030;
   font-size: 62px;
   text-align: center;
   margin-top: 32px;
@@ -324,7 +324,7 @@ footer {
 
 .work-thumb-overlay {
   position: absolute;
-  background: #7682cc;
+  background: #303030;
   border-radius: 5px;
   cursor: crosshair;
   opacity: 0;
@@ -377,7 +377,7 @@ footer {
 }
 
 #contact button#submit:hover {
-  background: #7682cc;
+  background: #303030;
   color: #ffffff;
 }
 
@@ -386,7 +386,7 @@ footer {
 -----------------------------------------*/
 
 footer {
-  background: #7682cc;
+  background: #303030;
   text-align: center;
   padding: 120px 0;
 }

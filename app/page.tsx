@@ -14,7 +14,7 @@ import Loading from './loading';
 
 export default function Home() {
   return (
-    <main className="main-content">
+    <main className="main-content p-0">
       <Suspense fallback={<Loading />}>
         <Container>
           <Hero />

@@ -1,6 +1,5 @@
 'use client';
-import { Text } from '@mantine/core';
-import { useEffect } from 'react';
+import { Text, Title } from '@mantine/core';
 import { FaCode, FaServer, FaDatabase, FaCloud } from 'react-icons/fa';
 
 const services = [
@@ -31,18 +30,12 @@ const services = [
 ];
 
 export default function Service() {
-    useEffect(() => {
-        if (typeof window !== 'undefined') {
-            const WOW = require('wow.js');
-            new WOW().init();
-        }
-    }, []);
 
     return (
         <section id="service" className="parallax-section">
             <div className="container">
-                <div className="section-title wow fadeInUp" data-wow-delay="0.2s">
-                    <h2>What I Can Do For You</h2>
+                <div className="section-title  fadeInUp" data-wow-delay="0.2s">
+                    <Title order={2}>What I Can Do For You</Title>
                     <Text>Specialized in full-stack development with a focus on scalable solutions</Text>
                 </div>
                 <div className="row justify-around w-100">

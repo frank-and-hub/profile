@@ -7,7 +7,7 @@
     Helvetica Neue, sans-serif;
   --font-mono: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
     Bitstream Vera Sans Mono, Courier New, monospace;
-  --color-purple: #9333ea;
+  --color-purple: #101010;
   --color-blue: #2563eb;
   --transition-duration: 300ms;
 }
@@ -225,7 +225,7 @@ html {
   font-size: 0.875rem;
   font-weight: 500;
   background-color: #f3e8ff;
-  color: #7e22ce;
+  color: #202020;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -253,13 +253,13 @@ html {
 
 .about-subtitle {
   font-size: 1.125rem;
-  color: #9333ea;
+  color: #101010;
   font-weight: 500;
 }
 
 @media (prefers-color-scheme: dark) {
   .about-subtitle {
-    color: #a855f7;
+    color: #202020;
   }
 }
 
@@ -298,7 +298,7 @@ html {
   width: 1.25rem;
   height: 1.25rem;
   border-radius: 9999px;
-  background-color: #9333ea;
+  background-color: #101010;
   color: white;
 }
 

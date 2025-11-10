@@ -4,7 +4,9 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import './styles/animations.css';
 import './styles/base.css';
 import 'swiper/css';
+import './globals.css'
 import { Providers } from './Providers';
+import { MantineProvider } from '@mantine/core';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -30,7 +32,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} main-body`}>
         <Providers>
-          {children}
+          <MantineProvider>
+            {children}
+          </MantineProvider>
         </Providers>
       </body>
     </html>

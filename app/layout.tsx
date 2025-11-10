@@ -31,11 +31,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} main-body`}>
-        <Providers>
-          <MantineProvider>
+        <MantineProvider>
+          <Providers>
             {children}
-          </MantineProvider>
-        </Providers>
+          </Providers>
+        </MantineProvider>
       </body>
     </html>
   );

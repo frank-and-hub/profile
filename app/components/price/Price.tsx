@@ -1,63 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Card, Title, Text, Button } from '@mantine/core';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { useAppSelector } from '@/app/lib/store/hooks';
+import { PriceInterface } from '@/app/api/interfaces/price';
 
-const plans = [
-    {
-        name: 'Starter Website',
-        price: '$499',
-        description:
-            'Perfect for individuals, freelancers, or small businesses who need a fast, modern, and professional online presence.',
-        features: [
-            'Responsive 5-page website',
-            'Modern UI/UX design',
-            'Contact & Inquiry Form',
-            'Basic SEO setup',
-            'Deployment on your custom domain',
-            'Performance optimization',
-            'Google Analytics integration',
-            '1-month maintenance & support',
-        ],
-        highlight: false,
-    },
-    {
-        name: 'Professional Web App',
-        price: '$1,499',
-        description:
-            'Ideal for growing businesses that need a data-driven web application with backend integration and advanced features.',
-        features: [
-            'Custom React.js / Next.js frontend',
-            'Node.js or Laravel backend',
-            'Database integration',
-            'User authentication & authorization',
-            'Admin dashboard & analytics',
-            'Payment gateway integration',
-            'Performance optimization & caching',
-            '1-months priority support',
-        ],
-        highlight: true,
-    },
-    {
-        name: 'Full-Stack Application',
-        price: '$1,999',
-        description:
-            'Best suited for startups and enterprises building scalable SaaS platforms or complex multi-tenant systems.',
-        features: [
-            'Frontend + Backend architecture',
-            'Next.js + Nest.js / Laravel API setup',
-            'User authentication & roles',
-            'Admin dashboard & management panel',
-            'Subscription & billing system',
-            'Multi-tenant / team workspace support',
-            'Deployment on AWS / Vercel',
-            '1-months dedicated support',
-        ],
-        highlight: false,
-    },
-];
+
 
 export default function Price() {
     const [isMobile, setIsMobile] = useState(false);
+    const priceData = useAppSelector((state) => state.prices);
+    const prices: PriceInterface[] = priceData && priceData?.list.length > 1 ? priceData?.list : [];
 
     useEffect(() => {
         const handleResize = () => setIsMobile(window.innerWidth < 768);
@@ -130,7 +82,7 @@ export default function Price() {
 
                 {!isMobile ? (
                     <div className="row justify-center">
-                        {plans.map((plan, i) => (
+                        {prices && prices.map((plan: PriceInterface, i) => (
                             <div key={i} className="col-md-4 col-sm-6 my-2 px-3 pb-5">
                                 {CardComponent(plan, i)}
                             </div>
@@ -138,7 +90,7 @@ export default function Price() {
                     </div>
                 ) : (
                     <Swiper spaceBetween={20} slidesPerView={1.1} centeredSlides={true} className="py-3">
-                        {plans.map((plan, i) => (
+                        {prices && prices.map((plan: PriceInterface, i) => (
                             <SwiperSlide key={i}>{CardComponent(plan, i)}</SwiperSlide>
                         ))}
                     </Swiper>

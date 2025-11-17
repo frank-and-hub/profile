@@ -7,7 +7,6 @@ import Works from './components/works/Works';
 import Contact from './components/contact/Contact';
 import Price from './components/price/Price';
 import { Container } from '@mantine/core';
-import ContactInfo from './components/contact/ContactInfo';
 import Footer from './components/footer/Footer';
 import { Suspense } from 'react';
 import Loading from './loading';
@@ -23,7 +22,6 @@ export default function Home() {
           <Works />
           <Price />
           <Contact />
-          <ContactInfo />
         </Container>
         <Footer />
       </Suspense>

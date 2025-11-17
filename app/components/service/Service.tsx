@@ -1,35 +1,11 @@
 'use client';
+import { ServiceInterface } from '@/app/api/interfaces/service';
+import { useAppSelector } from '@/app/lib/store/hooks';
 import { Text, Title } from '@mantine/core';
-import { FaCode, FaServer, FaDatabase, FaCloud } from 'react-icons/fa';
-
-const services = [
-    {
-        icon: FaCode,
-        title: "Full-stack Development",
-        description: "End-to-end development using React/Next.js and Node.js/Express.",
-        variant: "dark"
-    },
-    {
-        icon: FaServer,
-        title: "API Development",
-        description: "Building RESTful APIs and GraphQL services with authentication.",
-        variant: "default"
-    },
-    {
-        icon: FaDatabase,
-        title: "Database Architecture",
-        description: "Designing scalable database solutions and managing migrations.",
-        variant: "default"
-    },
-    {
-        icon: FaCloud,
-        title: "DevOps & Cloud",
-        description: "Setting up CI/CD, Docker, and cloud deployments.",
-        variant: "default"
-    }
-];
 
 export default function Service() {
+    const servicesData = useAppSelector((state) => state.services);
+    const services: ServiceInterface[] = servicesData && servicesData?.list.length > 1 ? servicesData?.list : [];
 
     return (
         <section id="service" className="parallax-section">
@@ -42,14 +18,14 @@ export default function Service() {
                     {services.map((service, i) => (
                         <div
                             key={i}
-                            className={`col-6 ${service.variant === 'dark' ? 'dark' : ''}`}
+                            className={`col-6 ${i === 0 ? 'dark' : ''}`}
                             data-wow-delay={`${0.2 * (i + 1)}s `}
                         >
                             <div className="text-center">
                                 <service.icon size={30} />
                             </div>
                             <h4 className="text-center">{service.title}</h4>
-                            <Text className='text-center'>{service.description}</Text>
+                            <Text className='text-center'>{service.category.join(', ')}</Text>
                         </div>
                     ))}
                 </div >

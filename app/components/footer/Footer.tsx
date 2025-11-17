@@ -1,9 +1,10 @@
-import { Container, Group, Text, ActionIcon, Divider, List, ListItem } from '@mantine/core';
+import { Container, Text, Divider } from '@mantine/core';
 import SocialLinks from '../social-links/SocialLinks';
 
 export default function Footer() {
     return (
         <>
+            <Divider className="pt-5 parallax-section" />
             <footer className="py-8 mt-auto mx-w-2xl w-full mx-auto bg">
                 <Container size="lg">
                     <Divider className="mb-8 parallax-section" />

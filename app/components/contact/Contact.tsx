@@ -1,7 +1,8 @@
 // 'use client';
 
 import { useState } from 'react';
-import { Button, Text, Textarea, TextInput } from '@mantine/core';
+import { Button, Divider, Text, Textarea, TextInput, Title } from '@mantine/core';
+import { IconBrandWhatsapp, IconMail, IconMap, IconMapPin, IconPhoneCalling } from '@tabler/icons-react';
 
 interface FormData {
     name: string;
@@ -69,18 +70,22 @@ export default function Contact() {
         }
     };
 
+    const address = `06 shyam vhatika, surya nagar 2nd, jaisingpura khor, jaipur, rajasthan, india, 302039`;
+    const poneNumber = `+91 9079515450`;
+    const emailAddress = `sourabbiswas000x@gmail.com`;
+
     return (
         <section id="contact" className="parallax-section">
             <div className="container">
                 <div className="row">
                     <div className="col-md-12 col-sm-12">
                         <div className="section-title" data-wow-delay="0.2s">
-                            <h2>Get in touch</h2>
+                            <Title order={2}>Get in touch</Title>
                             <Text>Let's discuss your next project</Text>
                         </div>
                     </div>
 
-                    <div className="col-md-12">
+                    <div className="col-md-6 mb-5">
                         <div className="" data-wow-delay="0.4s">
                             {status.message && (
                                 <div className={`alert ${status.type === 'success' ? 'alert-success' : 'alert-danger'} text-red`}>
@@ -113,6 +118,21 @@ export default function Contact() {
                                     </div>
                                 </div>
                             </form>
+                        </div>
+                    </div>
+
+                    <div className='col-md-6 mt-5'>
+                        <div className="contact-info py-6" data-wow-delay="0.4s">
+                            <div className="section-title">
+                                <Title order={3}>Contact Info</Title>
+                                <Text>Feel free to reach out for collaboration opportunities or to discuss your project requirements.</Text>
+                                <div className="mt-4 space-y-3">
+                                    <Text ta='start' size="md"><IconPhoneCalling size={18} style={{ verticalAlign: 'middle', marginRight: 4 }} /> Phone : {poneNumber}</Text>
+                                    <Text ta='start' size="md"><IconBrandWhatsapp size={18} style={{ verticalAlign: 'middle', marginRight: 4 }} /> Whatsapp : {poneNumber}</Text>
+                                    <Text ta="start" size="sm"><IconMail size={18} style={{ verticalAlign: 'middle', marginRight: 4 }} /> Email: {emailAddress}</Text>
+                                    <Text ta="start" size="sm"><IconMapPin size={18} style={{ verticalAlign: 'middle', marginRight: 4 }} />Address: {address}</Text>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

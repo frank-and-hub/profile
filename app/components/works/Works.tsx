@@ -1,37 +1,15 @@
 'use client';
 
 import Image from 'next/image';
-import { Text, Title } from '@mantine/core';
-
-interface WorkItem {
-    id: number;
-    title: string;
-    category: string;
-    image: string;
-}
-
-const works: WorkItem[] = [
-    {
-        id: 1,
-        title: "E-Commerce Platform",
-        category: "Full-stack Development",
-        image: "/images/work-image1.jpg"
-    },
-    {
-        id: 2,
-        title: "API Gateway System",
-        category: "Backend Development",
-        image: "/images/work-image2.jpg"
-    },
-    {
-        id: 3,
-        title: "Cloud Infrastructure",
-        category: "DevOps",
-        image: "/images/work-image3.jpg"
-    }
-];
+import { List, Text, Title } from '@mantine/core';
+import Link from 'next/link';
+import { useAppSelector } from '@/app/lib/store/hooks';
+import { WorkInterface } from '@/app/api/interfaces/work';
 
 export default function Work() {
+
+    const workData = useAppSelector((state) => state.works);
+    const works: WorkInterface[] = workData && workData?.list.length > 1 ? workData?.list : [];
 
     return (
         <section id="work" className="parallax-section">
@@ -43,16 +21,22 @@ export default function Work() {
                             <Text>Showcasing full-stack development, API integration, and cloud solutions</Text>
                         </div>
                     </div>
-                    {works.map((work) => (
-                        <div key={work.id} className="fadeInUp col-md-4 col-sm-6 my-2" data-wow-delay="0.5s">
+                    {works.map((work, i) => (
+                        <Link href={work?.href} key={i} className="fadeInUp col-md-4 col-sm-6 my-2" data-wow-delay="0.5s">
                             <div className="work-thumb">
                                 <div className="work-thumb-overlay">
                                     <h4 className="text-white">{work.title}</h4>
-                                    <h3>{work.category}</h3>
+                                    {/* <List className='text-center'>
+                                        {work.category.map((tech, index) => (
+                                            <List.Item key={index}>
+                                                {tech}{index < work.category.length - 1 ? ", " : ""}
+                                            </List.Item>
+                                        ))}
+                                    </List> */}
                                 </div>
-                                <Image src={work.image} alt={work.title} width={400} height={300} className="img-responsive rounded-2xl" />
+                                <Image src={work?.image && work.image.length > 0 ? work.image : '/images/work-image1.jpg'} alt={work.title} width={400} height={300} className="img-responsive rounded-2xl" />
                             </div>
-                        </div>
+                        </Link>
                     ))}
                 </div>
             </div>

@@ -34,23 +34,14 @@ export default function Price() {
         >
             <div className='m-auto w-screen'>
                 <div className="my-4">
-                    <Title order={4} size="xl" fw={700} className="mb-1 text-dark color">
-                        {plan.name}
-                    </Title>
-                    <div className="d-flex justify-center align-items-baseline mb-2">
-                        <Text size="xl" fw={700} className="me-2 text-primary">
-                            {plan.price}
-                        </Text>
-                    </div>
-                    <Text size="sm" c="dimmed">
-                        {plan.description}
-                    </Text>
+                    <Title order={4} size="xl" fw={700} className="text-dark color">{plan.name}</Title>
+                    <div className="d-flex justify-center align-items-baseline mb-1"><Text size="xl" fw={900} className="mb-1 text-primary ">€{plan.price}</Text></div>
+                    {plan.timeline && (<Text size="sm" c="dimmed">{plan.timeline}</Text>)}
+                    <Text className='text-sm text-dark'>{plan.description}</Text>
                 </div>
 
                 <div className="my-4">
-                    {plan?.features?.map((feature: string, idx: number) => (
-                        <Text key={idx} className='mb-1 text-sm' >{feature}</Text>
-                    ))}
+                    {plan?.features?.map((feature: string, idx: number) => (<Text key={idx} className='mb-1 text-sm' >{feature}</Text>))}
                 </div>
             </div>
 

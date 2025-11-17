@@ -3,53 +3,73 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 const staticPrices: PriceInterface[] = [
     {
-        name: 'Starter Website',
-        price: 499,
-        description: 'Perfect for individuals, freelancers, or small businesses who need a fast, modern, and professional online presence.',
+        name: "Basic Website",
+        price: 149,
+        description: "Simple, responsive website for individuals or small businesses.",
         features: [
-            'Responsive 5-page website',
-            'Modern UI/UX design',
-            'Contact & Inquiry Form',
-            'Basic SEO setup',
-            'Deployment on your custom domain',
-            'Performance optimization',
-            'Google Analytics integration',
-            '1-month maintenance & support',
+            "Up to 3 pages",
+            "Responsive UI design",
+            "HTML / CSS / JavaScript / Bootstrap",
+            "Contact form integration",
+            "Deployment support",
+            "5 days support",
+            "—",
+            "—"
         ],
         highlight: false,
+        timeline: "1-2 weeks"
     },
     {
-        name: 'Professional Web App',
-        price: 1499,
-        description: 'Ideal for growing businesses that need a data-driven web application with backend integration and advanced features.',
+        name: "Starter Web App",
+        price: 399,
+        description: "Interactive web app with login, database, and basic backend.",
         features: [
-            'Custom React.js / Next.js frontend',
-            'Node.js or Laravel backend',
-            'Database integration',
-            'User authentication & authorization',
-            'Admin dashboard & analytics',
-            'Payment gateway integration',
-            'Performance optimization & caching',
-            '1-months priority support',
+            "React.js / Next.js frontend",
+            "Simple backend (Laravel / Node.js)",
+            "Database setup (MySQL / MongoDB)",
+            "User authentication",
+            "Basic admin panel",
+            "API integrations (Email, SMS)",
+            "Deployment on hosting/AWS",
+            "1-week support"
+        ],
+        highlight: false,
+        timeline: "3-4 weeks"
+    },
+    {
+        name: "Business Web Application",
+        price: 799,
+        description: "Advanced business app with full frontend, backend, and integrations.",
+        features: [
+            "Full frontend + backend development",
+            "User authentication",
+            "Advanced admin dashboard",
+            "Payment gateway integration",
+            "Social login integration",
+            "Cloud storage (AWS S3)",
+            "Performance optimization",
+            "2-weeks premium support"
         ],
         highlight: true,
+        timeline: "5-7 weeks"
     },
     {
-        name: 'Full-Stack Application',
-        price: 1999,
-        description: 'Best suited for startups and enterprises building scalable SaaS platforms or complex multi-tenant systems.',
+        name: "Advanced Full-Stack Platform",
+        price: 1299,
+        description: "Complex full-stack platform with real-time features and cloud deployment.",
         features: [
-            'Frontend + Backend architecture',
-            'Next.js + Nest.js / Laravel API setup',
-            'User authentication & roles',
-            'Admin dashboard & management panel',
-            'Subscription & billing system',
-            'Multi-tenant / team workspace support',
-            'Deployment on AWS / Vercel',
-            '1-months dedicated support',
+            "End-to-end architecture design",
+            "Real-time chat & notifications",
+            "Agora audio/video calling",
+            "In-app purchases / Subscriptions",
+            "GraphQL / REST APIs (Next.js / Node.js / Laravel)",
+            "Multi-tenant systems",
+            "Cloud deployment (AWS / Docker)",
+            "1-month dedicated support"
         ],
         highlight: false,
-    },
+        timeline: "8-12 weeks"
+    }
 ];
 
 const priceSlice = createSlice({

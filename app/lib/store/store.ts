@@ -3,6 +3,7 @@ import usersSlice from './slices/usersSlice';
 import priceSlice from './slices/priceSlice';
 import workSlice from './slices/workSlice';
 import servicesSlice from './slices/servicesSlice';
+import socialSlice from './slices/socialDetailSlice';
 
 export const store = configureStore({
     reducer: {
@@ -10,6 +11,7 @@ export const store = configureStore({
         prices: priceSlice,
         works: workSlice,
         services: servicesSlice,
+        socials: socialSlice,
     },
 })
 

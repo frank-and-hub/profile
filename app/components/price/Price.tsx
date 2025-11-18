@@ -3,7 +3,7 @@ import { Container, Card, Title, Text, Button } from '@mantine/core';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { useAppSelector } from '@/app/lib/store/hooks';
 import { PriceInterface } from '@/app/api/interfaces/price';
-
+import { Autoplay } from "swiper/modules";
 
 
 export default function Price() {
@@ -21,21 +21,22 @@ export default function Price() {
     const CardComponent = (plan: any, i: number) => (
         <Card
             padding="xl"
-            radius="lg"
+            radius="xl"
             shadow="sm"
             style={{
-                // height: '35rem',
                 minHeight: '30rem',
                 maxHeight: '45rem',
                 overflow: 'hidden',
                 width: '100%'
             }}
-            className={`text-center transition-transform duration-300 p-3 row flex-col justify-between shadow-md rounded-2xl`}
+            className={`text-center transition-transform duration-300 p-2 row flex-col justify-between shadow-md rounded-2xl`}
         >
             <div className='m-auto w-screen'>
                 <div className="my-4">
                     <Title order={4} size="xl" fw={700} className="text-dark color">{plan.name}</Title>
-                    <div className="d-flex justify-center align-items-baseline mb-1"><Text size="xl" fw={900} className="mb-1 text-primary ">€{plan.price}</Text></div>
+                    <div className="d-flex justify-center align-items-baseline mb-1">
+                        <Text fw={900} className="mb-1 text-primary text-xl">€{plan.price}</Text>
+                    </div>
                     {plan.timeline && (<Text size="sm" c="dimmed">{plan.timeline}</Text>)}
                     <Text className='text-sm text-dark'>{plan.description}</Text>
                 </div>
@@ -45,7 +46,7 @@ export default function Price() {
                 </div>
             </div>
 
-            <div className='m-auto w-screen'>
+            <div className='m-auto w-screen mb-3'>
                 <Button
                     component="a"
                     href="#contact"
@@ -60,27 +61,27 @@ export default function Price() {
     );
 
     return (
-        <section id="price" className="section-padding bg-light parallax-section">
+        <section id="price" className="bg-light parallax-section">
             <div className="container px-0">
                 <div className="text-center mb-5">
                     <Title order={2} className="fw-bold mb-3 text-dark">
                         Transparent Pricing
                     </Title>
-                    <Text size="lg" color="dimmed" className="mx-auto w-75">
+                    <Text size="lg" color="dimmed" className="mx-auto w-75 px-2">
                         Choose a package that fits your needs. All prices are starting points and may vary based on specific requirements.
                     </Text>
                 </div>
 
                 {!isMobile ? (
-                    <div className="row justify-center">
+                    <div className="row justify-around">
                         {prices && prices.map((plan: PriceInterface, i) => (
-                            <div key={i} className="col-md-4 col-sm-6 my-2 px-3 pb-5">
+                            <div key={i} className="my-auto px-2 py-3 col-4">
                                 {CardComponent(plan, i)}
                             </div>
                         ))}
                     </div>
                 ) : (
-                    <Swiper spaceBetween={20} slidesPerView={1.1} centeredSlides={true} className="py-3">
+                    <Swiper spaceBetween={15} slidesPerView={1.1} centeredSlides={true} className="py-3" loop={true} modules={[Autoplay]} autoplay={{ delay: 3000, disableOnInteraction: false }}>
                         {prices && prices.map((plan: PriceInterface, i) => (
                             <SwiperSlide key={i}>{CardComponent(plan, i)}</SwiperSlide>
                         ))}

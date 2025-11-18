@@ -58,19 +58,6 @@ const staticWorks: WorkInterface[] = [
         href: "https://www.artitudehome.com/"
     },
     {
-        title: "E-commerce Website",
-        category: [
-            "HTML",
-            "CSS",
-            "JavaScript",
-            "Core PHP",
-            "PostgreSQL",
-            "Razorpay Integration"
-        ],
-        image: "",
-        href: "https://www.i-cakes.co.uk/"
-    },
-    {
         title: "SEO Content Management System",
         category: [
             "Next.js",
@@ -97,6 +84,19 @@ const staticWorks: WorkInterface[] = [
         ],
         image: "",
         href: "https://pocketproperty.app/"
+    },
+    {
+        title: "E-commerce Website",
+        category: [
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "Core PHP",
+            "PostgreSQL",
+            "Razorpay Integration"
+        ],
+        image: "",
+        href: "https://www.i-cakes.co.uk/"
     },
     {
         title: "Real Estate App",

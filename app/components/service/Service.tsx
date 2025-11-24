@@ -14,11 +14,11 @@ export default function Service() {
                     <Title order={2}>What I Can Do For You</Title>
                     <Text>Specialized in full-stack development with a focus on scalable solutions</Text>
                 </div>
-                <div className="row justify-around w-100">
+                <div className="row justify-around w-100 mx-auto">
                     {services.map((service, i) => (
                         <div
                             key={i}
-                            className={`col-6 ${i === 0 ? 'dark' : ''}`}
+                            className={`col-lg-4 col-sm-6 col-12 shadow-hover rounded-2xl p-4 my-3 service-box fadeInUp`}
                             data-wow-delay={`${0.2 * (i + 1)}s `}
                         >
                             <div className="text-center">
@@ -28,8 +28,8 @@ export default function Service() {
                             <Text className='text-center'>{service.category.join(', ')}</Text>
                         </div>
                     ))}
-                </div >
-            </div >
-        </section >
+                </div>
+            </div>
+        </section>
     );
 }

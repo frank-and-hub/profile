@@ -52,7 +52,7 @@ export default function Price() {
                     href="#contact"
                     fullWidth
                     size="md"
-                    className=" fadeInUp smoothScroll btn btn-default section-btn"
+                    className=" fadeInUp smoothScroll btn btn-default section-btn shadow rounded-0 py-2 px-4"
                 >
                     Get Started
                 </Button>

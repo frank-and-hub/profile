@@ -27,7 +27,7 @@ export default function Hero() {
                             </Text>
                             <Link
                                 href="#contact"
-                                className="fadeInUp smoothScroll btn btn-default section-btn"
+                                className="fadeInUp smoothScroll btn btn-default section-btn shadow rounded-0 py-2 px-4"
                                 data-wow-delay="1s"
                             >
                                 Lets Connect

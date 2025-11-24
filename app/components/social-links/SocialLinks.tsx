@@ -8,16 +8,17 @@ type SocialLinksProps = {
 
 export default function SocialLinks({ color = true }: SocialLinksProps) {
     const socialData = useAppSelector((state) => state.socials);
-    const socialLinks: SocialInterface[] = socialData && socialData?.list.length > 1 ? socialData?.list : [];
+    const socialLinks: SocialInterface[] =
+        socialData && socialData?.list.length > 1 ? socialData?.list : [];
 
     return (
-        <>
-            <div className="social-icon row py-3 justify-around mb-3">
+        <div className={`row py-3 mb-3 justify-content-center`}>
+            <div className={`col-12 col-md-${color ? '9' : '3'} d-flex justify-content-around mx-auto`}>
                 {socialLinks.map((data: SocialInterface, i: number) => (
-                    <div key={i} className='p-0'>
+                    <div key={i} className="p-0">
                         <Link
                             href={data.href}
-                            className={`${color ? 'color' : 'text-white'} text-2xl`}
+                            className={`${color ? 'color' : 'text-white'} fs-3`}
                             target="_blank"
                             rel="noopener noreferrer"
                         >
@@ -26,6 +27,6 @@ export default function SocialLinks({ color = true }: SocialLinksProps) {
                     </div>
                 ))}
             </div>
-        </>
-    )
+        </div>
+    );
 }

@@ -22,7 +22,7 @@ export default function Work() {
     }, []);
 
     const subComponent = (work: WorkInterface, i: number) => (
-        <Link href={work?.href} key={i} className="fadeInUp col-md-4 col-sm-6 col-6 mt-2 mb-1" data-wow-delay="0.5s">
+        <Link href={work?.href} key={i} className="rounded-md" data-wow-delay="0.5s">
             <div className="work-thumb">
                 <div className="work-thumb-overlay">
                     <h4 className="text-white">{work.title}</h4>
@@ -49,19 +49,21 @@ export default function Work() {
                             <Text>Showcasing full-stack development, API integration, and cloud solutions</Text>
                         </div>
                     </div>
-                    {!isMobile ? (works && works.map((work: WorkInterface, i: number) => (
-                        <div key={i}>
-                            {/* {subComponent(work, i)} */}
-                        </div>
-                    ))) : (
-                        <Swiper spaceBetween={20} slidesPerView={1.1} centeredSlides={true} className="py-3" loop={true} modules={[Autoplay]} autoplay={{ delay: 3000, disableOnInteraction: false, reverseDirection: true }}>
-                            {works && works.map((work: WorkInterface, i: number) => (
-                                <SwiperSlide key={i}>
-                                    {subComponent(work, i)}
-                                </SwiperSlide>
-                            ))}
-                        </Swiper>
-                    )}
+                    <div className="col-md-12 col-sm-12 row w-100 mx-auto justify-around">
+                        {!isMobile ? (works && works.map((work: WorkInterface, i: number) => (
+                            <div key={i} className="col-lg-4 col-sm-6 col-12 p-2 my-0 service-box fadeInUp mx-auto">
+                                {subComponent(work, i)}
+                            </div>
+                        ))) : (
+                            <Swiper spaceBetween={20} slidesPerView={1.1} centeredSlides={true} className="py-3" loop={true} modules={[Autoplay]} autoplay={{ delay: 3000, disableOnInteraction: false, reverseDirection: true }}>
+                                {works && works.map((work: WorkInterface, i: number) => (
+                                    <SwiperSlide key={i} className='p-2'>
+                                        {subComponent(work, i)}
+                                    </SwiperSlide>
+                                ))}
+                            </Swiper>
+                        )}
+                    </div>
                 </div>
             </div>
         </section>

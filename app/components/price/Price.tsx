@@ -20,18 +20,7 @@ export default function Price() {
     }, []);
 
     const CardComponent = (plan: any, i: number) => (
-        <Card
-            padding="xl"
-            radius="xl"
-            shadow="sm"
-            style={{
-                minHeight: '30rem',
-                maxHeight: '45rem',
-                overflow: 'hidden',
-                width: '100%'
-            }}
-            className={`text-center transition-transform duration-300 p-2 row flex-col justify-between shadow-md rounded-2xl`}
-        >
+        <Card className={`text-center transition-transform duration-300 p-3 row flex-col justify-between shadow-hover rounded-2xl`} >
             <div className='m-auto w-screen'>
                 <div className="my-4">
                     <Title order={4} size="xl" fw={700} className="text-dark color">{plan.name}</Title>
@@ -50,7 +39,7 @@ export default function Price() {
             <div className='m-auto w-screen mb-3'>
                 <Button
                     fullWidth
-                    onClick={() => handlePay({ amount: plan.price, orderId: `order_${Date.now()}_${i}`, productName: plan.name   })}
+                    onClick={() => handlePay({ amount: plan.price, orderId: `order_${Date.now()}_${i}`, productName: plan.name })}
                     size="md"
                     className=" fadeInUp smoothScroll btn btn-default section-btn shadow rounded-0 py-2 px-4"
                 >
@@ -75,7 +64,7 @@ export default function Price() {
                 {!isMobile ? (
                     <div className="row justify-around mx-auto w-100">
                         {prices && prices.map((plan: PriceInterface, i) => (
-                            <div key={i} className="my-auto px-2 py-3 col-4">
+                            <div key={i} className="col-lg-4 col-sm-6 col-12 p-4 my-3 service-box fadeInUp mx-auto">
                                 {CardComponent(plan, i)}
                             </div>
                         ))}
@@ -83,7 +72,7 @@ export default function Price() {
                 ) : (
                     <Swiper spaceBetween={15} slidesPerView={1.1} centeredSlides={true} className="py-3" loop={true} modules={[Autoplay]} autoplay={{ delay: 3000, disableOnInteraction: false }}>
                         {prices && prices.map((plan: PriceInterface, i) => (
-                            <SwiperSlide key={i}>{CardComponent(plan, i)}</SwiperSlide>
+                            <SwiperSlide key={i} className='px-4'>{CardComponent(plan, i)}</SwiperSlide>
                         ))}
                     </Swiper>
                 )}

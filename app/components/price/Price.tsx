@@ -4,6 +4,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { useAppSelector } from '@/app/lib/store/hooks';
 import { PriceInterface } from '@/app/api/interfaces/price';
 import { Autoplay } from "swiper/modules";
+import { handlePay } from './pay';
 
 
 export default function Price() {
@@ -48,9 +49,8 @@ export default function Price() {
 
             <div className='m-auto w-screen mb-3'>
                 <Button
-                    component="a"
-                    href="#contact"
                     fullWidth
+                    onClick={() => handlePay({ amount: plan.price, orderId: `order_${Date.now()}_${i}`, productName: plan.name   })}
                     size="md"
                     className=" fadeInUp smoothScroll btn btn-default section-btn shadow rounded-0 py-2 px-4"
                 >

@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   --primary-color: #404040;
   --secondary-color: #707070;
@@ -13,6 +17,7 @@
 
 /* Base Styles */
 body {
+  background-color: #fff;
   font-family: var(--font-body);
   font-size: 16px;
   line-height: 1.6;
@@ -20,7 +25,13 @@ body {
   color: var(--primary-color);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
-  filter: grayscale(100%);
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
+
+body::-webkit-scrollbar {
+  /* Chrome, Safari */
+  display: none;
 }
 
 h1,
@@ -306,6 +317,12 @@ img {
 }
 
 .form-control {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.mantine-Input-input {
   width: 100%;
 }
 

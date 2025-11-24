@@ -2,7 +2,6 @@ import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 import { Ratelimit } from '@upstash/ratelimit';
 import { Redis } from '@upstash/redis';
-import { useSelector, useDispatch } from 'react-redux'
 
 // Initialize rate limiter
 const ratelimit = new Ratelimit({
@@ -14,83 +13,60 @@ const ratelimit = new Ratelimit({
 });
 
 // Email validation
-const isValidEmail = (email: string) => {
-    const regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-    return regex.test(email);
-};
+const isValidEmail = (email: string) => /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/.test(email);
 
 // Input validation
 const validateInput = (data: any) => {
     const { name, email, message } = data;
-    if (!name || typeof name !== 'string' || name.length < 2) {
+    if (!name || typeof name !== 'string' || name.length < 2)
         return 'Name must be at least 2 characters long';
-    }
-    if (!email || !isValidEmail(email)) {
+
+    if (!email || !isValidEmail(email))
         return 'Please provide a valid email address';
-    }
-    if (!message || typeof message !== 'string' || message.length < 10) {
+
+    if (!message || typeof message !== 'string' || message.length < 10)
         return 'Message must be at least 10 characters long';
-    }
+
     return null;
 };
 
 export async function POST(req: NextRequest) {
     try {
-        // Get client IP
-        const ip = req.headers.get('x-forwarded-for') || '127.0.0.1';
-
-        // Rate limiting check
-        const { success, limit, reset, remaining } = await ratelimit.limit(ip);
-
-        if (!success) {
-            return NextResponse.json({
-                error: `Too many requests. Please try again after ${new Date(reset).getMinutes()} minutes.`
-            }, {
-                status: 429,
-                headers: {
-                    'X-RateLimit-Limit': limit.toString(),
-                    'X-RateLimit-Remaining': remaining.toString(),
-                    'X-RateLimit-Reset': reset.toString()
-                }
-            });
-        }
-
         const data = await req.json();
 
         // Validate input
         const validationError = validateInput(data);
-        if (validationError) {
+        if (validationError)
             return NextResponse.json({ error: validationError }, { status: 400 });
-        }
 
         const { name, email, message } = data;
 
-        if (!name || !email || !message) {
+        if (!name || !email || !message)
             return new Response(JSON.stringify({ error: 'Missing fields' }), { status: 400 });
-        }
+
 
         // Basic email validation
-        if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+        if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email))
             return new Response(JSON.stringify({ error: 'Invalid email' }), { status: 400 });
-        }
+
 
         // Require SMTP config via env
         const SMTP_HOST = process.env.SMTP_HOST;
-        const SMTP_PORT = process.env.SMTP_PORT;
+        const SMTP_PORT = Number(process.env.SMTP_PORT);
         const SMTP_USER = process.env.SMTP_USER;
         const SMTP_PASS = process.env.SMTP_PASS;
         const SMTP_FROM = process.env.SMTP_FROM ?? process.env.SMTP_USER;
         const SITE_OWNER_EMAIL = process.env.SITE_OWNER_EMAIL ?? process.env.SMTP_USER;
 
-        if (!SMTP_HOST || !SMTP_PORT || !SMTP_USER || !SMTP_PASS || !SITE_OWNER_EMAIL) {
+        if (!SMTP_HOST || !SMTP_PORT || !SMTP_USER || !SMTP_PASS || !SITE_OWNER_EMAIL)
             return new Response(JSON.stringify({ error: 'SMTP not configured. Set SMTP_HOST/SMTP_PORT/SMTP_USER/SMTP_PASS and SITE_OWNER_EMAIL in env.' }), { status: 500 });
-        }
 
         const transporter = nodemailer.createTransport({
             host: SMTP_HOST,
             port: Number(SMTP_PORT),
             secure: Number(SMTP_PORT) === 465,
             auth: { user: SMTP_USER, pass: SMTP_PASS },
+            tls: { rejectUnauthorized: false },
         });
 
         // Send notification to site owner with contact details
@@ -101,18 +77,23 @@ export async function POST(req: NextRequest) {
             text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
         });
 
+        const verified = await transporter.verify();
+        console.log("SMTP Verified?", verified);
+
         // Send thank-you email to sender
         await transporter.sendMail({
             from: SMTP_FROM,
             to: email,
-            subject: `Thanks for contacting us`,
+            subject: `Thanks for contacting us ${name}`,
             text: `Hi ${name},\n\nThanks for contacting us — we'll get back to you soon.\n\n— Team`,
         });
 
-        return new Response(JSON.stringify({ ok: true }), { status: 200 });
+        // return new Response(JSON.stringify({ ok: true }), { status: 200 });
+        return NextResponse.json({ ok: true }, { status: 200 });
     } catch (err: any) {
         console.error('Contact API error', err);
-        return new Response(JSON.stringify({ error: err?.message ?? 'Unknown error' }), { status: 500 });
+        // return new Response(JSON.stringify({ error: err?.message ?? 'Unknown error' }), { status: 500 });
+        return NextResponse.json({ error: err?.message ?? 'Unknown error' }, { status: 500 });
     }
 }
 

@@ -73,7 +73,7 @@ export default function Price() {
                 </div>
 
                 {!isMobile ? (
-                    <div className="row justify-around">
+                    <div className="row justify-around mx-auto w-100">
                         {prices && prices.map((plan: PriceInterface, i) => (
                             <div key={i} className="my-auto px-2 py-3 col-4">
                                 {CardComponent(plan, i)}

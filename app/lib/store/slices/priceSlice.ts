@@ -18,8 +18,7 @@ const staticPrices: PriceInterface[] = [
         ],
         highlight: false,
         timeline: "1-2 weeks"
-    },
-    {
+    }, {
         name: "Starter Web App",
         price: 399,
         description: "Interactive web app with login, database, and basic backend.",
@@ -35,8 +34,7 @@ const staticPrices: PriceInterface[] = [
         ],
         highlight: false,
         timeline: "3-4 weeks"
-    },
-    {
+    }, {
         name: "Business Web",
         price: 799,
         description: "Advanced business app with full frontend, backend, and integrations.",
@@ -52,8 +50,7 @@ const staticPrices: PriceInterface[] = [
         ],
         highlight: true,
         timeline: "5-7 weeks"
-    },
-    {
+    }, {
         name: "Full-Stack Platform",
         price: 1299,
         description: "Complex full-stack platform with real-time features and cloud deployment.",

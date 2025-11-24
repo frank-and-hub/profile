@@ -15,8 +15,7 @@ const staticWorks: WorkInterface[] = [
         ],
         image: "",
         href: "https://scholarsbox.in/"
-    },
-    {
+    }, {
         title: "Bank Management System",
         category: [
             "Laravel (PHP)",
@@ -28,8 +27,7 @@ const staticWorks: WorkInterface[] = [
         ],
         image: "",
         href: "https://samraddh.com"
-    },
-    {
+    }, {
         title: "Task Management App",
         category: [
             "React.js",
@@ -41,8 +39,7 @@ const staticWorks: WorkInterface[] = [
         ],
         image: "",
         href: "https://wincy.com"
-    },
-    {
+    }, {
         title: "E-commerce Website",
         category: [
             "HTML",
@@ -56,8 +53,7 @@ const staticWorks: WorkInterface[] = [
         ],
         image: "",
         href: "https://www.artitudehome.com/"
-    },
-    {
+    }, {
         title: "SEO Content Management System",
         category: [
             "Next.js",
@@ -69,8 +65,7 @@ const staticWorks: WorkInterface[] = [
         ],
         image: "",
         href: "https://parkscape.app/"
-    },
-    {
+    }, {
         title: "Real Estate Listing Platform",
         category: [
             "Next.js",
@@ -84,8 +79,7 @@ const staticWorks: WorkInterface[] = [
         ],
         image: "",
         href: "https://pocketproperty.app/"
-    },
-    {
+    }, {
         title: "E-commerce Website",
         category: [
             "HTML",
@@ -97,8 +91,7 @@ const staticWorks: WorkInterface[] = [
         ],
         image: "",
         href: "https://www.i-cakes.co.uk/"
-    },
-    {
+    }, {
         title: "Real Estate App",
         category: [
             "Laravel",
@@ -111,8 +104,7 @@ const staticWorks: WorkInterface[] = [
         ],
         image: "",
         href: "https://homee.app/"
-    },
-    {
+    }, {
         title: "Fitness Tracking App",
         category: [
             "Next.js",
@@ -125,8 +117,7 @@ const staticWorks: WorkInterface[] = [
         ],
         image: "",
         href: "https://fitpro360x.com/"
-    },
-    {
+    }, {
         title: "Dating Application",
         category: [
             "Next.js",

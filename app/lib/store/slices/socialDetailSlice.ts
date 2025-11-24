@@ -7,24 +7,21 @@ const staticSocial: SocialInterface[] = [
         icon: FaFacebook,
         href: 'https://facebook.com/your-profile',
         label: 'Facebook',
-    },
-    {
+    }, {
         icon: FaTwitter,
         href: 'https://twitter.com/your-handle',
         label: 'Twitter',
-    },
-    {
+    }, {
         icon: FaInstagram,
         href: 'https://instagram.com/your-profile',
         label: 'Instagram',
-    },
-    {
+    }, {
         icon: FaGithub,
-        href: 'https://behance.net/your-profile',
-        label: 'Behance',
+        href: 'https://github.com/frank-and-hub',
+        label: 'Github',
     }, {
         icon: FaLinkedin,
-        href: 'https://linkedin.com/in/your-profile',
+        href: 'https://www.linkedin.com/in/sourab-biswas-a7935a1a1',
         label: 'LinkedIn',
     }
 ];

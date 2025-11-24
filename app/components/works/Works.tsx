@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { List, Text, Title } from '@mantine/core';
+import { Card, List, Text, Title } from '@mantine/core';
 import Link from 'next/link';
 import { useAppSelector } from '@/app/lib/store/hooks';
 import { WorkInterface } from '@/app/api/interfaces/work';
@@ -22,7 +22,7 @@ export default function Work() {
     }, []);
 
     const subComponent = (work: WorkInterface, i: number) => (
-        <Link href={work?.href} key={i} className="fadeInUp col-md-4 col-sm-6 my-2" data-wow-delay="0.5s">
+        <Link href={work?.href} key={i} className="fadeInUp col-md-4 col-sm-6 col-6 mt-2 mb-1" data-wow-delay="0.5s">
             <div className="work-thumb">
                 <div className="work-thumb-overlay">
                     <h4 className="text-white">{work.title}</h4>
@@ -44,20 +44,16 @@ export default function Work() {
             <div className="container">
                 <div className="row">
                     <div className="col-md-12 col-sm-12">
-                        <div className="fadeInUp section-title" data-wow-delay="0.2s">
+                        <div className={`fadeInUp section-title ${!isMobile ? 'mb-2' : ''}`} data-wow-delay="0.2s">
                             <Title order={2}>Featured Projects</Title>
                             <Text>Showcasing full-stack development, API integration, and cloud solutions</Text>
                         </div>
                     </div>
-                    {!isMobile ? (
-                        <>
-                            {works && works.map((work: WorkInterface, i: number) => (
-                                <>
-                                    {subComponent(work, i)}
-                                </>
-                            ))}
-                        </>
-                    ) : (
+                    {!isMobile ? (works && works.map((work: WorkInterface, i: number) => (
+                        <div key={i}>
+                            {/* {subComponent(work, i)} */}
+                        </div>
+                    ))) : (
                         <Swiper spaceBetween={20} slidesPerView={1.1} centeredSlides={true} className="py-3" loop={true} modules={[Autoplay]} autoplay={{ delay: 3000, disableOnInteraction: false, reverseDirection: true }}>
                             {works && works.map((work: WorkInterface, i: number) => (
                                 <SwiperSlide key={i}>

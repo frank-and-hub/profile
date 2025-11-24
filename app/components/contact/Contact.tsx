@@ -1,8 +1,9 @@
 // 'use client';
 
 import { useState } from 'react';
-import { Button, Divider, Text, Textarea, TextInput, Title } from '@mantine/core';
-import { IconBrandWhatsapp, IconMail, IconMap, IconMapPin, IconPhoneCalling } from '@tabler/icons-react';
+import { Button, Text, Textarea, TextInput, Title } from '@mantine/core';
+import { IconBrandWhatsapp, IconMail, IconMapPin, IconPhoneCalling } from '@tabler/icons-react';
+import axios from "axios";
 
 interface FormData {
     name: string;
@@ -41,17 +42,16 @@ export default function Contact() {
         setStatus({ type: '', message: '' });
 
         try {
-            const response = await fetch('/api/contact', {
-                method: 'POST',
+            const response = await axios.post('/api/contact', formData, {
                 headers: {
+                    'Accept': 'application/json',
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(formData),
             });
 
-            const data = await response.json();
+            const data = response.data;
 
-            if (!response.ok) {
+            if (response.status !== 200) {
                 throw new Error(data.error || 'Failed to send message');
             }
 
@@ -88,22 +88,22 @@ export default function Contact() {
                     <div className="col-md-6 mb-5">
                         <div className="" data-wow-delay="0.4s">
                             {status.message && (
-                                <div className={`alert ${status.type === 'success' ? 'alert-success' : 'alert-danger'} text-red`}>
+                                <div className={`alert ${status.type === 'success' ? 'text-green' : 'text-red'}`}>
                                     {status.message}
                                 </div>
                             )}
                             <form id="contact-form" onSubmit={handleSubmit}>
                                 <div className="row">
                                     <div className="py-3 col-md-6 col-sm-6">
-                                        <TextInput id="name" name="name" type="text" placeholder="Your Name" value={formData.name} onChange={handleChange} minLength={2} maxLength={50} className="shadow-sm rounded-2xl form-control" />
+                                        <TextInput id="name" name="name" type="text" placeholder="Your Name" value={formData.name} onChange={handleChange} minLength={2} maxLength={50} className="shadow-sm rounded-2xl form-control" required />
                                     </div>
 
                                     <div className="py-3 col-md-6 col-sm-6">
-                                        <TextInput id="email" name="email" type="email" placeholder="Your email address" value={formData.email} onChange={handleChange} pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" className="shadow-sm rounded-2xl form-control" />
+                                        <TextInput id="email" name="email" type="email" placeholder="Your email address" value={formData.email} onChange={handleChange} pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" className="shadow-sm rounded-2xl form-control" required />
                                     </div>
 
                                     <div className="py-3 col-md-12 col-sm-12">
-                                        <Textarea id="message" name="message" placeholder="Your message here..." value={formData.message} onChange={handleChange} minLength={10} maxLength={1000} minRows={6} className="shadow-sm rounded-2xl form-control" />
+                                        <Textarea id="message" name="message" placeholder="Your message here..." value={formData.message} onChange={handleChange} minLength={10} maxLength={1000} minRows={6} className="shadow-sm rounded-2xl form-control" required />
                                     </div>
 
                                     <div className="text-center col-12">
@@ -126,7 +126,7 @@ export default function Contact() {
                             <div className="section-title">
                                 <Title order={3}>Contact Info</Title>
                                 <Text>Feel free to reach out for collaboration opportunities or to discuss your project requirements.</Text>
-                                <div className="mt-4 space-y-3">
+                                <div className="mt-4 space-y-3 px-3">
                                     <Text ta='start' size="md"><IconPhoneCalling size={18} style={{ verticalAlign: 'middle', marginRight: 4 }} /> Phone : {poneNumber}</Text>
                                     <Text ta='start' size="md"><IconBrandWhatsapp size={18} style={{ verticalAlign: 'middle', marginRight: 4 }} /> Whatsapp : {poneNumber}</Text>
                                     <Text ta="start" size="sm"><IconMail size={18} style={{ verticalAlign: 'middle', marginRight: 4 }} /> Email: {emailAddress}</Text>
